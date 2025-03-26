@@ -3,7 +3,7 @@ using Fusion;
 
 public class PlayerMove : NetworkBehaviour
 {
-    public CharacterController controller;
+    public CharacterController controller;    
     public float Speed = 10f;
     public float JumpHeight = 3f; // Chiều cao nhảy
     public float Gravity = -9.81f; // Gia tốc trọng trường
@@ -11,6 +11,7 @@ public class PlayerMove : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
+
         if (!Object.HasStateAuthority) return;
 
         var x = Input.GetAxis("Horizontal");
@@ -25,7 +26,7 @@ public class PlayerMove : NetworkBehaviour
 
             // Kiểm tra xem phím cách có được nhấn hay không
             if (Input.GetButtonDown("Jump"))
-            {
+            {   
                 velocity.y = Mathf.Sqrt(JumpHeight * -2f * Gravity); // Tính toán vận tốc nhảy
             }
         }
